@@ -5,11 +5,11 @@
 In Procfile
 
 ```
-web gunicorn [your_app_file_name]:[your_app_name]
+web gunicorn [your_app_file_name]:[your_variable_name_of_flask_app]
 
 for example, web gunicorn server:fbbot
 app filename is server.py
-variable name of Flask in app file is fbbot
+variable name of Flask app file is fbbot
 
 ```
 
