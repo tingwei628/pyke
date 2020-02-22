@@ -1,5 +1,7 @@
 from flask import Flask
 from config import Config
+import os
+
 
 """
 fbbot is the variable name of Flask app
@@ -13,11 +15,15 @@ fbbot.config.from_object(Config)
 def index():
     return 'I am fbbot'
 
-@fbbot.route('anywhere')
+@fbbot.route('/anywhere')
 def anywhere():
     return 'anywhere'
 
-
+"""
+default 5000
+"""
+#port = int(os.environ.get('PORT', 5000))
 
 if __name__ == '__main__': 
     fbbot.run()
+    #    fbbot.run(host='0.0.0.0', port=port)
