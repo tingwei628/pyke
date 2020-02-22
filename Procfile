@@ -1,1 +1,1 @@
-web: gunicorn -b :$PORT fbbot.server:fbbot
+web: gunicorn -b :$PORT server:fbbot --log-file=-
