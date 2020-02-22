@@ -1,1 +1,1 @@
-web: sh -c 'cd fbbot' && gunicorn -b :$PORT server:fbbot
+web: gunicorn -b :$PORT fbbot.server:fbbot
