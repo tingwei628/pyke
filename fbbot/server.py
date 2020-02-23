@@ -15,11 +15,12 @@ import os
 """
 fbbot is the variable name of Flask app
 template_folder = '.' // current_directory
+static_folder = '.' // current_directory
 
 """
 fbbot = Flask( __name__,
         static_url_path='',
-        static_folder='/assets',
+        static_folder='./assets',
         template_folder='./assets/template')
 
 """ __name__ : executed module name""" 
