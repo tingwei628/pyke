@@ -25,7 +25,9 @@ from datetime import (
     datetime
 )
 
-
+from crawl import (
+    getposts
+)
 """
 fbbot is the variable name of Flask app
 template_folder = '.' // current_directory
@@ -46,15 +48,8 @@ fbbot.add_template_filter(date)
 
 @fbbot.route('/')
 def index():
-    posts=[{
-        'title': '55',
-        'time': datetime(2020, 2, 21).timetuple(),
-        'content': '55',
-        'url': '55'
 
-        }]
-
-    return render_template('index.html', post_list=posts)
+    return render_template('index.html', post_list=getposts())
     # return 'I am fbbot'
 
 @fbbot.route('/test_redirect')
