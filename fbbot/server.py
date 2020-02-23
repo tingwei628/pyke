@@ -1,23 +1,51 @@
-from flask import Flask
+from flask import (
+        Flask, 
+        Blueprint, 
+        request, 
+        jsonify, 
+        render_template, 
+        redirect, 
+        url_for
+)
 from config import Config
+# from config import Config, ProdConfig
 import os
 
 
 """
 fbbot is the variable name of Flask app
+template_folder = '.' // current_directory
+
 """
-fbbot = Flask(__name__) 
+fbbot = Flask( __name__,
+        static_url_path='',
+        static_folder='/assets',
+        template_folder='./assets/template')
+
 """ __name__ : executed module name""" 
 fbbot.config.from_object(Config)
 
 
 @fbbot.route('/')
 def index():
-    return 'I am fbbot'
+    return render_template('index.html')
+    # return 'I am fbbot'
 
-@fbbot.route('/anywhere')
-def anywhere():
-    return 'anywhere'
+@fbbot.route('/test_redirect')
+def test_redirect():
+        return redirect(url_for('index'))
+
+"""
+@fbbot.route('/test/<string:test_paras>')
+def test(test_paras):
+    return test_paras
+"""
+@fbbot.route('/anywhere',methods=['GET'])
+def aywhere():
+    if 'wtf' == request.args['for']:
+        return jsonify('fuck you')
+    else:
+        return jsonify('幹')
 
 """
 default 5000
