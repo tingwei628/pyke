@@ -10,6 +10,20 @@ from flask import (
 from config import Config
 # from config import Config, ProdConfig
 import os
+from template_filter import date
+
+"""
+strftime // datetime format to str
+strptime // str to datetime
+"""
+
+from time import (
+    strftime, 
+    strptime  
+)
+from datetime import (
+    datetime
+)
 
 
 """
@@ -25,11 +39,22 @@ fbbot = Flask( __name__,
 
 """ __name__ : executed module name""" 
 fbbot.config.from_object(Config)
+fbbot.add_template_filter(date)
+
+
 
 
 @fbbot.route('/')
 def index():
-    return render_template('index.html')
+    posts=[{
+        'title': '55',
+        'time': datetime(2020, 2, 21).timetuple(),
+        'content': '55',
+        'url': '55'
+
+        }]
+
+    return render_template('index.html', post_list=posts)
     # return 'I am fbbot'
 
 @fbbot.route('/test_redirect')
