@@ -44,9 +44,9 @@ def test(test_paras):
 @fbbot.route('/anywhere',methods=['GET'])
 def aywhere():
     if 'wtf' == request.args['for']:
-        return jsonify('fuck you')
+        return jsonify('wtf you')
     else:
-        return jsonify('幹')
+        return jsonify('fuxx')
 
 """
 default 5000
