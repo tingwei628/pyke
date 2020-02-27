@@ -6,11 +6,13 @@ from time import(
     sleep
 )
 from flask import request
+import os
 
 http_proxies = []
 https_proxies = []
 all_lines = []
-with open('./doc/proxy.txt', 'r') as f:
+
+with open(os.path.abspath("./doc/proxy.txt"), 'r') as f:
     all_lines=f.readlines()
 
 https_proxies = all_lines[1:2]
