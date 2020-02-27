@@ -11,8 +11,8 @@ import os
 http_proxies = []
 https_proxies = []
 all_lines = []
-
-with open(os.path.join(os.getcwd(), 'doc/proxy.txt'), 'r') as f:
+current_dir=os.path.dirname(os.path.realpath(__file__))
+with open(os.path.join(current_dir, 'doc/proxy.txt'), 'r') as f:
     all_lines=f.readlines()
 
 https_proxies = all_lines[1:2]
