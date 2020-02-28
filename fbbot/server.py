@@ -41,7 +41,10 @@ fbbot = Flask( __name__,
 
 """ __name__ : executed module name""" 
 fbbot.config.from_object(Config)
-fbbot.add_template_filter(date)
+fbbot.add_template_filter(date
+        )
+open('/tmp/app-initialized', 'w').close()
+
 
 
 
