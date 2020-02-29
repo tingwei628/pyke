@@ -1,2 +1,3 @@
-web: bin/start-nginx bundle exec gunicorn -c gunicorn_config.py server:fbbot
+release: touch /tmp/app-initialized
+web: bin/start-nginx gunicorn -c gunicorn_config.py server:fbbot
 
