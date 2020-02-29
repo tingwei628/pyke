@@ -1,3 +1,3 @@
 bind = 'unix:///tmp/nginx.socket'
-def when_ready(server):
+def pre_fork(server, worker):
     open('/tmp/app-initialized', 'w').close()
