@@ -1,2 +1,2 @@
-web: bin/start-nginx gunicorn -c gunicorn_config.py server:fbbot
+web: bin/start-nginx bundle exec gunicorn -c gunicorn_config.py server:fbbot
 
