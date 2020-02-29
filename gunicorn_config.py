@@ -1,3 +1,4 @@
+from pathlib import Path
 bind = 'unix:///tmp/nginx.socket'
 def pre_fork(server, worker):
-    open('/tmp/app-initialized', 'w').close()
+    Path('/tmp/app-initialized').touch()
