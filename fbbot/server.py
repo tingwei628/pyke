@@ -12,6 +12,8 @@ from config import Config
 import os
 from template_filter import date
 
+
+
 """
 strftime // datetime format to str
 strptime // str to datetime
@@ -28,6 +30,11 @@ from datetime import (
 from crawl import (
     getposts
 )
+# import asyncio
+import threading
+
+
+
 """
 fbbot is the variable name of Flask app
 template_folder = '.' // current_directory
@@ -45,14 +52,12 @@ fbbot.add_template_filter(date
         )
 
 
-
-
-
 @fbbot.route('/')
-def index():
-
-    return render_template('index.html', post_list=getposts())
-    # return 'I am fbbot'
+def index():    
+    # print('index() thread %s' % threading.current_thread().name)
+    #return render_template('index.html', post_list=getposts())
+    post_list=getposts()
+    return 'I am fbbot'
 
 @fbbot.route('/test_redirect')
 def test_redirect():
