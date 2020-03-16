@@ -10,6 +10,7 @@ import os
 import re
 import asyncio
 import threading
+import pyppeteer
 
 
 http_proxies = []
@@ -30,13 +31,19 @@ http_proxies = all_lines[3:4]
 #asyncio.set_event_loop(new_loop)
 #policy = asyncio.get_event_loop_policy()
 #policy._local._loop = policy.new_event_loop()
+#browser = await pyppeteer.launch({ 'handleSIGINT': False, 'handleSIGTERM': False, 'handleSIGUP': False })
 def getposts():
     #loop=asyncio.new_event_loop()
     #asyncio.set_event_loop(loop)
     #session = AsyncHTMLSession(loop=loop)
     new_loop=asyncio.new_event_loop()
     asyncio.set_event_loop(new_loop)
+    #browser = pyppeteer.launch({ 'handleSIGINT': False, 'handleSIGTERM': False, 'handleSIGUP': False })   
     session = AsyncHTMLSession()
+    #print('browser ', browser)
+    #isbrowser = hasattr(session, '_browser')
+    #session._brwoser = browser
+    # session = AsyncHTMLSession()
     # asyncio.set_event_loop_policy(policy)
     print('thread %s' % threading._MainThread)
     print('thread %s' % threading.current_thread().name)
@@ -58,14 +65,22 @@ async def getposts_async():
 
     regex_story = re.compile(r'^/story\.php.*=%2As-R$')
     regex_next_page = re.compile(r'^/profile\.php')
-    new_loop=asyncio.new_event_loop()
-    asyncio.set_event_loop(new_loop)
+    #new_loop=asyncio.new_event_loop()
+    #asyncio.set_event_loop(new_loop)
     session = AsyncHTMLSession()
+
+    browser = await pyppeteer.launch({'ignoreHTTPSErrors':True, 'headless':True, 'handleSIGINT':False, 'handleSIGTERM':False, 'handleSIGHUP':False})    
+    # print('inside browser ', browser)
+    session._browser = browser
+    #await session.browser 
+    #print('inside session has _browser ', isbrowser)
     while True:
       resp_page = await session.get(next_page_url)
       resp_page.encoding = 'utf-8'
-      html_page = resp_page
-      soup_page = html_page.html.links
+      await resp_page.html.arender()
+      soup_page = resp_page
+      print('soup_page ',soup_page)
+      soup_page = soup_page.html.links
       url_tags = [link for link in soup_page if regex_story.search(link)]
       next_page_tags = [link for link in soup_page if regex_next_page.search(link)]
       # next_page_tags = soup_page.find_all('div', class_='j')
