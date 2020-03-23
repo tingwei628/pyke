@@ -7,16 +7,12 @@
 	  <div id="board">
 	    <div class="card"></div>
 	  </div>
-	  <div>posts count {{post_list|length}}</div>
-		{% for post in post_list %}
-	  	<div>
+	  <div>posts count {{post_list[0]|length}}</div>
+	        {% for post in post_list[0] %}
 		  <div>{{post.url}}</div>
 		  <div>{{post.title}}</div>
 		  <div>{{post.content}}</div>
-		  <div>{{post.time|date}}</div>
-
-          	</div>
-	  	{%endfor%}
+	  	{% endfor %}
        <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
 </body>
 </html>

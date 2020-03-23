@@ -55,9 +55,9 @@ fbbot.add_template_filter(date
 @fbbot.route('/')
 def index():    
     # print('index() thread %s' % threading.current_thread().name)
-    #return render_template('index.html', post_list=getposts())
-    post_list=getposts()
-    return 'I am fbbot'
+    return render_template('index.html', post_list=getposts())
+    #post_list=getposts()
+    #return 'I am fbbot'
 
 @fbbot.route('/test_redirect')
 def test_redirect():
