@@ -42,7 +42,7 @@ async def getposts_async():
     regex_story = re.compile(r'^/story\.php.*=%2As-R$')
     regex_next_page = re.compile(r'^/profile\.php\?sectionLoadingID.*$')
     session = AsyncHTMLSession()
-    browser = await pyppeteer.launch({'ignoreHTTPSErrors':True, 'headless':True, 'handleSIGINT':False, 'handleSIGTERM':False, 'handleSIGHUP':False, 'args': ['--no-sandbox']})    
+    browser = await pyppeteer.launch({'ignoreHTTPSErrors':True, 'headless':True, 'handleSIGINT':False, 'handleSIGTERM':False, 'handleSIGHUP':False, 'args': ['--no-sandbox', '--disable-setuid-sandbox']})    
     session._browser = browser
     cookies_str=os.environ.get('COOKIES_STR')
     cookie_dict={}
