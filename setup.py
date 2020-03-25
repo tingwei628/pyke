@@ -9,8 +9,17 @@ class PostInstallCommand(install):
         os.system('pyppeteer-install')
 
 
-with open('requirements.txt') as f:
-    required = f.read().splitlines()
+
+required=[
+    'Flask',
+    'gunicorn',
+    'beautifulsoup4',
+    'requests-html',
+    'pyppeteer'
+]
+
+#with open('requirements.txt') as f:
+#    required = f.read().splitlines()
     
 setup(
     install_requires=required,
