@@ -21,3 +21,8 @@ variable name of Flask app file is fbbot
 
 
 - gunicorn // for heroku
+
+## Install
+```
+python setup.py install
+```
