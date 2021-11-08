@@ -26,3 +26,6 @@ variable name of Flask app file is fbbot
 ```
 python setup.py install
 ```
+
+## Reference
+https://testdriven.io/blog/fastapi-machine-learning/
