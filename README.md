@@ -1,5 +1,6 @@
 # pyke
-A bot in python
+Keyword Extraction in Python
+
 
 
 > These files need to be at root of the project for deploying on Heroku 
