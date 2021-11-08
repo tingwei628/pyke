@@ -1,4 +1,4 @@
-# pybot
+# pyke
 A bot in python
 
 
