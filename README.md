@@ -1,7 +1,9 @@
 # pyke
-Keyword Extraction in Python
+> Keyword Extraction in Python
 
+use `Tf-idf` to extract keyword ,then analyze upvotes and comments on Hacker News
 
+---
 
 > These files need to be at root of the project for deploying on Heroku 
 
